@@ -1,0 +1,40 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.container{
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    margin-top: 150px;
+}
+
+.registration, .login{
+    display: inline-block;
+    vertical-align: top;
+    border: black 1px solid;
+    padding: 20px;
+}
+
+h1{
+    font-family: 'Amatic SC', cursive;
+    font-size: 150%;
+}
+
+p{
+    text-align: left;
+}
+
+.login{
+    margin-left: 50px;
+}
+
+.registration{
+    margin-right: 50px;
+}
+
+ul{
+    list-style: none;
+    margin-top: 20px;
+    color: red;
+}
