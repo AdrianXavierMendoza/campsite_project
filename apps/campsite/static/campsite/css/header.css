@@ -1,0 +1,70 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+header{
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    background-color: rgb(230, 235, 242);
+    box-shadow: 5px 5px 8px silver;
+    z-index: 10;
+    position: fixed;
+    width: 100%;
+    height: 120px;
+}
+
+.login{
+    font-family: 'Quicksand', sans-serif;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.logo{
+    margin-right: 60%;
+    margin-bottom: 10px;
+    font-family: 'Amatic SC', cursive;
+    font-size: 40px;
+    text-decoration: none;
+    vertical-align: middle;
+    text-align: center;
+    display: inline-block;
+    height: 50px;
+}
+
+a, a:link, a:visited, a:hover{
+    color: lightslategray;
+    text-decoration: none;
+}
+
+header p{
+    vertical-align: middle;
+    display: inline-block;
+    padding-top: 5px;
+}
+
+.line{
+    border: 1px solid gray;
+    padding: 2px;
+    width: 326px;
+}
+.tent{
+    border-left: 3px orangered solid;
+    border-top: 3px orange solid;
+    transform: rotate(45deg);
+    width: 20px;
+    height: 20px;
+    margin-left: 25px;
+    margin-right: 25px;
+    display: inline-block;
+}
+
+.logo_1{
+    vertical-align: middle;
+}
+
+.btn{
+    box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.75);
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CampTown | Edit Trip</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Archivo+Black|Open+Sans:300|Questrial|Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'campsite/css/index.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    {% include "campsite/header.html" %}
+    {% block content %}
+    <div class="container">
+        <h1> Edit your trip</h1>
+        <p>Name:{{campsite.name}}</p>
+        <form action="" method="POST"> {% csrf_token %}
+            <p>Start Date: <input type="date" name="start_date"></p>
+            <p>End Date: <input type="date" name="end_date"></p>
+            <input type="submit" name="edit_cancel" value="Edit" class="btn btn-info"> 
+            <input type="submit" name="edit_cancel" value="Cancel" class="btn btn-info"> 
+        </form>
+    </div>
+    {% endblock %}
+</body>
+</html>

@@ -3,9 +3,15 @@ from .models import *
 from django.contrib import messages
 import bcrypt
 
+
+
 #renders index
 def index(request):
     return render(request, "campsite/index.html")
+
+#renders login_page
+def login_page(request):
+    return render(request, "campsite/register_login.html")
 
 #registration process (clicking button to submit the form)
 def registration(request):
@@ -13,7 +19,7 @@ def registration(request):
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect('/')
+        return redirect('/login_page')
     else:
         password = request.POST['pw']
         pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
@@ -32,7 +38,7 @@ def login(request):
     if len(login_errors) > 0:
         for key, value in login_errors.items():
             messages.error(request, value)
-        return redirect('/')
+        return redirect('/login_page') 
     else:
         logged_user = User.objects.get(email = request.POST['email'])
         request.session['id'] = logged_user.id
@@ -51,6 +57,9 @@ def success(request, id):
 def logout(request):
     request.session.clear()
     return redirect("/")
+
+def edit(request):
+    return render (request, "campsite/edit.html")
 
 
 

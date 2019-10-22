@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CampTown</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Archivo+Black|Open+Sans:300|Questrial|Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'campsite/css/header.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    {% include "campsite/header.html" %}
+        {% block content %}
+        <div class="container">
+            <div class="wrapper col-10 mx-auto">
+                <div class="text">
+                    <p>Welcome!</p>
+                    <p>Plan your next adventure today!</p>
+                </div>
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{% static 'campsite/images/stars.jpg' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'campsite/images/yellow.jpg' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'campsite/images/dog.jpg' %}" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+                <div class="about">
+                    <p>Here at CampTown we make it easy to plan your next camping adventure. We are committed to making your next camping trip as specail as you are!</p>
+                </div>
+                <div class="links ">
+                    <a href=""><div class="jumbotron"></div></a>
+                    <a href=""><div class="jumbotron"><h3>Browse campsites</h3></div></a>
+                    <a href=""><div class="jumbotron"></div></a>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+</body>
+</html>

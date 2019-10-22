@@ -1,0 +1,19 @@
+*{
+    margin: 0px;
+    padding: 0px
+}
+
+header{
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    background-color: rgb(202, 214, 235);
+}
+
+.logo{
+    margin-right: 80%;
+    font-family: 'Amatic SC', cursive;
+    font-size: 40px;
+    text-decoration: none;
+}
