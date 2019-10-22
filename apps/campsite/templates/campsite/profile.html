@@ -4,18 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Success</title>
+    <title>Profile</title>
     {% load static %}
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Archivo+Black|Open+Sans:300|Questrial|Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'campsite/style.css' %}">
+    <link rel="stylesheet" href="{% static 'campsite/profile.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container col-10">
-        <h1>Success! Welcome, {{user.first_name}} </h1>
-        <form action="/logout" method="POST">{% csrf_token %}
-            <input type=submit name="logout" value="Log Out" class="btn btn-outline-secondary">
-        </form>
+    {% include "campsite/header.html" %}
+     {% block content %}
+    <div class="container col-12" align='center'>
+        <div class="wrapper col-10" align='center'>
+            <div class='user'>
+                <img src="https://s3.amazonaws.com/37assets/svn/1065-IMG_2529.jpg" alt="..." class="img-thumbnail d-inline-block col-3">
+                <div class='d-inline-block col-8'><h3 class=''>{{ member.fname }} {{ member.lname }} Adrian Mendoza (member since: 2019) {{ member.created_at }}</h3>
+                    <a href='' class='btn btn-info col-6'>CREATE A TRIP</a>
+                </div>
+            </div>
+
+            <h3>Upcoming Trips</h3>
+            <table class="table table-borderless col-11">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Campsite</th>
+                    <th scope="col">Start</th>
+                    <th scope="col">End</th>
+                    <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <th scope="row">1</th>
+                    <td><a href=''>Lake Chabot</a></td>
+                    <td>08/12/2020</td>
+                    <td>08/20/2020</td>
+                    <td>
+                        <a href='/edit/{{ trip.id }}'>Edit</a>
+                        <a href='/cancel/{{ trip.id }}'>Cancel</a>
+                    </td>
+                    </tr>
+                    {% for trip in locations %}
+                    <tr>
+                    <th scope="row">{{ trip.id }}</th>
+                    <td>{{ trip.site }}</td>
+                    <td>{{ trip.start }}</td>
+                    <td>{{ trip.end }}</td>
+                    <td>
+                        <a href='/edit/{{ trip.id }}'>Edit</a>
+                        <a href='/cancel/{{ trip.id }}'>Cancel</a>
+                    </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+             </table>
+
+             <h3>Previous Trips</h3>
+
+             <table class="table table-borderless col-11">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Campsite</th>
+                        <th scope="col">Review</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+<!-- Example reviews -->
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>
+                                <p><a href=''>Lake Chabot</a></p>
+                                <p>8/18-8/20</p>
+                                <a href='/book/{{ trip.id }}'>Book again</a>
+                            </td>
+
+<!-- if user has not left a review -->
+                            <td>
+                                <textarea class='form form-control'></textarea>
+                                <button type='submit' class='btn btn-info'>Submit</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>
+                                <p><a href=''>Lake Chabot</a></p>
+                                <p>8/18-8/20</p>
+                                <a href='/book/{{ trip.id }}'>Book again</a>
+                            </td>
+
+<!-- if user has left a review -->
+                            <td>
+                                <h6>★★★★★</h6>
+                                <p>THis campsite was great!!</p>
+                            </td>
+                        </tr>
+<!-- END EXAMPLE -->
+
+
+
+<!-- THIS IS THE LOOP -->
+                        {% for trip in locations %}
+                        <tr>
+                            <th scope="row">{{ trip.id</th>
+                            <td>
+                                <p>{{ trip.site }}</p>
+                                <p>{{ trip.start }}-{{ trip.end }}</p>
+                                <a href='/book/{{ trip.id }}'>Book again</a>
+                            </td>
+    
+<!-- Condition: if user has review/notreviewed-->
+                            {% if review in user.reviews %}
+                            <td>
+                                <h6>★★★★★</h6>
+                                <p>This campsite was great!!</p>
+                            </td>
+                            {% else %}
+                            <td>
+                                <textarea class='form form-control'></textarea>
+                                <button type='submit' class='btn btn-info'>Submit</button>
+                            </td>
+                            {% endif %}
+                        </tr>
+
+                        
+                        {% endfor %}
+                    </tbody>
+                 </table>
+
+        </div>
     </div>
+    {% endblock %}
 </body>
 </html>

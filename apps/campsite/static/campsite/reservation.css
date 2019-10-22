@@ -1,0 +1,27 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    /* border-style: dotted;
+    border-color: black;
+    border-width: 0.5px; */
+    /* font-family: 'Amatic SC', cursive; */
+    
+}
+header{
+    height:100px;
+}
+.camp_details, .book{
+    vertical-align: top;
+}
+.weather{
+    min-height: 100px;
+}
+.book{
+    padding: 10px;
+}
+.container{
+    font-family: 'Quicksand', sans-serif;
+}
+.wrapper{
+    padding-top: 150px;
+}

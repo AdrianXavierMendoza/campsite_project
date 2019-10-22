@@ -1,0 +1,31 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    /* border-style: dotted;
+    border-color: black;
+    border-width: 0.5px; */
+    /* font-family: 'Amatic SC', cursive; */
+    
+}
+
+label{
+    display: block;
+    text-align: left;
+}
+form p{
+    text-align: left;
+}
+.campsites p{
+    text-align: left;
+}
+
+.wrapper{
+    padding-top: 150px;
+}
+
+.container{
+    font-family: 'Quicksand', sans-serif;
+}
+tr{
+    margin: 20px;
+}

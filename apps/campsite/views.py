@@ -46,15 +46,20 @@ def success(request, id):
         context = {
             "user":User.objects.get(id=id)
         }
-        return render(request, "campsite/success.html", context)
+        return render(request, "campsite/profile.html", context)
 
 def logout(request):
     request.session.clear()
     return redirect("/")
 
+def profile(request):
+    return render(request, "campsite/profile.html")
 
+def search(request):
+    return render(request, "campsite/search_sites.html")
 
-
+def reservation(request):
+    return render(request, "campsite/reservation.html")
 
     
 

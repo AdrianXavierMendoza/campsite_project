@@ -1,0 +1,26 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    /* border-style: dotted;
+    border-color: black;
+    border-width: 0.5px; */
+    /* font-family: 'Amatic SC', cursive; */
+}
+
+.container{
+    margin-left:0px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.wrapper{
+    padding-top: 150px;
+}
+
+
+.user div{
+    vertical-align: top;
+}
+
+.user h3{
+    text-align: left;
+}
