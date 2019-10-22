@@ -1,0 +1,49 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.container{
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    padding-left: 50px;
+    padding-top: 150px;
+}
+.wrapper{
+    text-align: center;
+}
+
+h1{
+    font-family: 'Amatic SC', cursive;
+    color: lightslategray;
+}
+
+ul{
+    list-style: none;
+    margin-top: 20px;
+    color: red;
+}
+
+.btn{
+    box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.75);
+}
+
+.registration, .login_group{
+    display: inline-block;
+    width: 33%;
+    vertical-align: top;
+}
+
+.registration{
+    margin-right: 10px;
+}
+
+.login_group{
+    margin-left: 10px; 
+}
+
+p{
+    text-align: left;
+}
+
+
