@@ -17,7 +17,7 @@
         <div class="wrapper col-10">
             <div>
             <h1>Search Campsites:</h1>
-                <form action='' methods='POST' class='col-6'>
+                <form action='/search_results' method='POST' class='col-6'>
                     {% csrf_token %}
                     <table class='col-12'>
                         <tr>
@@ -121,7 +121,8 @@
             <div class='campsites'>
                 <img src="https://s3.amazonaws.com/37assets/svn/1065-IMG_2529.jpg" alt="..." class="img-thumbnail d-inline-block col-2">
                 <div class='d-inline-block col-8'>
-                    <p>Lake Chabot<label>★★★★★</label></p>
+                    <p>{{ site }}<label>★★★★★</label></p>
+                    
                     <p> info on campsite</p>
                 </div>
             </div>

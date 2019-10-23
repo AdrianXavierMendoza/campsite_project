@@ -2,6 +2,8 @@ from django.shortcuts import render, HttpResponse, redirect
 from .models import *
 from django.contrib import messages
 import bcrypt
+import xmltodict
+import requests
 
 
 
@@ -68,7 +70,21 @@ def edit(request):
 
 #renders search page
 def search(request):
-    return render(request, "campsite/search_sites.html")
+    if 'search_result' in request.session:
+        context = {
+            "site" : request.session['search_result'],
+        }
+        return render(request, "campsite/search_sites.html", context)
+    else:
+        return render(request, "campsite/search_sites.html")
+
+#
+def search_results(request):
+    park_state = request.POST['pstate']
+    r = requests.get("http://api.amp.active.com/camping/campgrounds?pstate="+park_state+"&api_key=axg5nzjhbug58fg67rfgwspc")
+    obj = xmltodict.parse(r.text)
+    request.session['search_result'] = obj['resultset']['result'][0]['@facilityName']
+    return redirect('/search')
 
 #renders reservation page
 def reservation(request):
