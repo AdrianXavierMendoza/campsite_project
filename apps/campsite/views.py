@@ -80,13 +80,14 @@ def search(request):
         # }
         return render(request, "campsite/search_sites.html")
  
-#takes in parametes and redirects to search page (possibly needs AJAX)
+#takes in parameters and redirects to search page (possibly needs AJAX)
 def search_results(request):
     # if "pstate" in request.GET:
     park_state = request.GET['pstate']
     park_amenity = request.GET['amenity']
     park_site_type = request.GET['siteType']
-    r = requests.get("http://api.amp.active.com/camping/campgrounds?pstate="+park_state+park_amenity+park_site_type+"&api_key=axg5nzjhbug58fg67rfgwspc")
+    park_pet = request.GET['petsAllowed']
+    r = requests.get("http://api.amp.active.com/camping/campgrounds?pstate="+park_state+park_amenity+park_site_type+park_pet+"&api_key=axg5nzjhbug58fg67rfgwspc")
     obj = xmltodict.parse(r.text)
     print(obj['resultset'])
 
