@@ -13,5 +13,5 @@ urlpatterns = [
     url(r'^reservation$', views.reservation), #renders reservation page
     url(r'^edit$', views.edit), #renders edit page
     url(r'^confirmation$',views.confirmation), #renders confirmation page 
-
+    url(r'^search_results$', views.search_results),
 ]
