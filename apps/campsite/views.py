@@ -70,21 +70,38 @@ def edit(request):
 
 #renders search page
 def search(request):
-    if 'search_result' in request.session:
-        context = {
-            "site" : request.session['search_result'],
-        }
-        return render(request, "campsite/search_sites.html", context)
-    else:
+   
+        # context = {
+        #     "site" : request.session['search_result'],
+        #     # "site_photo" : request.session['result_photo'],
+        #     "site_lat" : request.session['result_lat'],
+        #     "site_lon" : request.session['result_lon'],
+        #     # "site_pets" : request.session['spotlight_pets']
+        # }
         return render(request, "campsite/search_sites.html")
-
-#
+ 
+#takes in parametes and redirects to search page (possibly needs AJAX)
 def search_results(request):
-    park_state = request.POST['pstate']
-    r = requests.get("http://api.amp.active.com/camping/campgrounds?pstate="+park_state+"&api_key=axg5nzjhbug58fg67rfgwspc")
+    # if "pstate" in request.GET:
+    park_state = request.GET['pstate']
+    park_amenity = request.GET['amenity']
+    park_site_type = request.GET['siteType']
+    r = requests.get("http://api.amp.active.com/camping/campgrounds?pstate="+park_state+park_amenity+park_site_type+"&api_key=axg5nzjhbug58fg67rfgwspc")
     obj = xmltodict.parse(r.text)
-    request.session['search_result'] = obj['resultset']['result'][0]['@facilityName']
-    return redirect('/search')
+    print(obj['resultset'])
+
+
+    for camp in obj['resultset']['result']:
+        camp['facilityName'] = camp['@facilityName']
+        camp['facilityPhoto'] = camp['@faciltyPhoto']
+        camp['latitude'] = round(float(camp['@latitude']))
+        camp['longitude'] = round(float(camp['@longitude']))
+        # camp['amenity'] = park_amenity
+    context = {
+        "campsites" : obj['resultset']['result'],
+        
+    }
+    return render(request, "campsite/search_sites.html", context)
 
 #renders reservation page
 def reservation(request):

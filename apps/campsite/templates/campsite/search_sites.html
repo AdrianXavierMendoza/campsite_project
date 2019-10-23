@@ -17,12 +17,12 @@
         <div class="wrapper col-10">
             <div>
             <h1>Search Campsites:</h1>
-                <form action='/search_results' method='POST' class='col-6'>
+                <form action='/search_results' method='GET' class='col-6'>
                     {% csrf_token %}
                     <table class='col-12'>
                         <tr>
                             <td>State:</td>
-                            <td><select class='form form-control' name="pstate">
+                            <td><select class='form form-control' name="pstate" required>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
                                 <option value="AZ">Arizona</option>
@@ -79,59 +79,48 @@
                         <tr>
                             <td>Amenity:</td>
                             <td><select class='form form-control' name="amenity">
-                                <option value="4001">Biking</option>
-                                <option value="4002">Boating</option>
-                                <option value="4003">Equipment Rental</option>
-                                <option value="4004">Fishing</option>
-                                <option value="4005">Golf</option>
-                                <option value="4006">Hiking</option>
-                                <option value="4007">Horseback Riding</option>
-                                <option value="4008">Hunting</option>
-                                <option value="4009">Recreational Activities</option>
-                                <option value="4010">Scenic Trails</option>
-                                <option value="4011">Sports</option>
-                                <option value="4012">Beach/Water Activities</option>
-                                <option value="4013">Winter Activities</option>
+                                <option value=""></option>
+                                <option value="&amenity=4001">Biking</option>
+                                <option value="&amenity=4002">Boating</option>
+                                <option value="&amenity=4003">Equipment Rental</option>
+                                <option value="&amenity=4004">Fishing</option>
+                                <option value="&amenity=4005">Golf</option>
+                                <option value="&amenity=4006">Hiking</option>
+                                <option value="&amenity=4007">Horseback Riding</option>
+                                <option value="&amenity=4008">Hunting</option>
+                                <option value="&amenity=4009">Recreational Activities</option>
+                                <option value="&amenity=4010">Scenic Trails</option>
+                                <option value="&amenity=4011">Sports</option>
+                                <option value="&amenity=4012">Beach/Water Activities</option>
+                                <option value="&amenity=4013">Winter Activities</option>
                             </select> </td>
                         </tr>
                         <tr>
                             <td>Site Type:</td>
                             <td><select class='form form-control'name='siteType'>
-                                <option value="2001">RV Sites</option>
-                                <option value="10001">Cabins or Lodgings</option>	
-                                <option value="2003">Tent</option>
-                                <option value="2002">Trailer</option>
-                                <option value="9002">Group Site	9002</option>
-                                <option value="9001">Day Use</option>
-                                <option value="3001">Horse Site</option>
-                                <option value="2004">Boat Site</option>
+                                <option value=""></option>
+                                <option value="&siteType=2001">RV Sites</option>
+                                <option value="&siteType=10001">Cabins or Lodgings</option>	
+                                <option value="&siteType=2003">Tent</option>
+                                <option value="&siteType=2002">Trailer</option>
+                                <option value="&siteType=9002">Group Site	9002</option>
+                                <option value="&siteType=9001">Day Use</option>
+                                <option value="&siteType=3001">Horse Site</option>
+                                <option value="&siteType=2004">Boat Site</option>
                             </select> </td>
                         </tr>
                     </table>
                     <input type='submit' class='btn btn-info'>
                 </form>
             </div>
-            <div class='campsites'>
-                <img src="https://s3.amazonaws.com/37assets/svn/1065-IMG_2529.jpg" alt="..." class="img-thumbnail d-inline-block col-2">
-                <div class='d-inline-block col-8'>
-                    <p>{{ site }}<label>★★★★★</label></p>
-                    
-                    <p> info on campsite</p>
-                </div>
-            </div>
-            <div class='campsites'>
-                <img src="https://s3.amazonaws.com/37assets/svn/1065-IMG_2529.jpg" alt="..." class="img-thumbnail d-inline-block col-2">
-                <div class='d-inline-block col-8'>
-                    <p>Lake Merrit<label>★★★★</label></p>
-                    <p> Smells funny</p>
-                </div>
-            </div>
             {% for camp in campsites %}
             <div class='campsites'>
-                    <img src="https://s3.amazonaws.com/37assets/svn/1065-IMG_2529.jpg" alt="..." class="img-thumbnail d-inline-block col-2">
+                    <img src="http://reserveamerica.com/{{ camp.facilityPhoto }}" alt="error" class="img-thumbnail d-inline-block col-2">
                     <div class='d-inline-block col-8'>
-                        <p>{{ camp.site }}<label>{{ camp.rating }}</label></p>
-                        <p>{{ camp.info }}</p>
+                        
+                        <p>
+                            <a href='/reservation/{{ camp.facilityName }}'></a><label>{{ camp.facilityName }}</label></p>
+                        <p>{{ camp.amenity }}{{ camp.latitude }} {{ camp.longitude }}</p>
                     </div>
                 </div>
 
