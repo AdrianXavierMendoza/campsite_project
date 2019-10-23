@@ -1,0 +1,11 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.container{
+    font-family: 'Quicksand', sans-serif;
+}
+
+h1{
+    font-family: 'Amatic SC', cursive;
+}
