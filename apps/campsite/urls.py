@@ -8,10 +8,10 @@ urlpatterns = [
     url(r'^login$', views.login), #submits the login
     url(r'^new_user$', views.success), #renders the success page
     url(r'^logout$', views.logout), #clears session and redirects to login page
-
-
-    url(r'^profile$', views.profile),
-    url(r'^search$', views.search),
-    url(r'^reservation$', views.reservation),
+    url(r'^profile$', views.profile), #renders user profile
+    url(r'^search$', views.search), #renders search page
+    url(r'^reservation$', views.reservation), #renders reservation page
     url(r'^edit$', views.edit), #renders edit page
+    url(r'^confirmation$',views.confirmation), #renders confirmation page 
+
 ]

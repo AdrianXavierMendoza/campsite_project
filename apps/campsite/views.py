@@ -5,7 +5,7 @@ import bcrypt
 
 
 
-#renders index
+#renders index (homepage)
 def index(request):
     return render(request, "campsite/index.html")
 
@@ -53,24 +53,29 @@ def success(request, id):
             "user":User.objects.get(id=id)
         }
         return render(request, "campsite/profile.html", context)
-
+#submits log out and ends session
 def logout(request):
     request.session.clear()
     return redirect("/")
 
+#renders user profile
 def profile(request):
     return render(request, "campsite/profile.html")
-    
+
+#renders edit page
 def edit(request):
     return render (request, "campsite/edit.html")
 
-
+#renders search page
 def search(request):
     return render(request, "campsite/search_sites.html")
 
+#renders reservation page
 def reservation(request):
     return render(request, "campsite/reservation.html")
 
-    
+#renders confirmation page 
+def confirmation(request):
+    return render(request, "campsite/confirmation.html")
 
 

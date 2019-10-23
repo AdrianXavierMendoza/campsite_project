@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CampTown | Confirmation</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Archivo+Black|Open+Sans:300|Questrial|Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'campsite/css/header.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    {% include "campsite/header.html" %}
+        {% block content %}
+        <div class="container col-10 mx-auto">
+            <div class="wrapper">
+                <h1>Reservation complete!</h1>
+                <p >Your confirmation code is {{reservation.id}}</p>
+                <p>We're excited to hear about your trip from {{reservation.start_date}} to {{reservation.end_date}} at {{campsite.name}}. If you need to edit your trip or cancel you can do so by going to your Upcoming Trips in your profile.</p>
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>

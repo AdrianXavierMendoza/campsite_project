@@ -67,4 +67,11 @@ header p{
 
 .btn{
     box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.75);
+    box-align: right;
+}
+
+.hello{
+    font-family: 'Amatic SC', cursive;
+    display: inline-block;
+    margin-left: 30%;
 }

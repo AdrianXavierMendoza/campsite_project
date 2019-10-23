@@ -37,8 +37,6 @@ class UserManager(models.Manager):
                 login_errors['pwinvalid'] = "Login failed"
         return login_errors
 
-
-
 class User(models.Model):
     first_name = models.CharField(max_length = 255)
     last_name = models.CharField(max_length = 255)
@@ -49,4 +47,21 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
-# Create your models here.
+# class Campsite(models.Model):
+#     facilityName = models.Charfield(max_length = 255)
+#     state = models.
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+
+class Reservation(models.Model):
+    user = models.ForeignKey(User, related_name = "reservations")
+    # campsite = models.ForeignKey(Campsite, related_name = "reservations")
+    start_date = models.DateField()
+    end_date = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class Review(models.Model):
+    #campsite = models.ForeignKey(Campsite, related_name
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
