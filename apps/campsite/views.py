@@ -93,6 +93,8 @@ def search_results(request):
 
 
     for camp in obj['resultset']['result']:
+        camp['contract_Code'] = camp['@contractID']
+        camp['park_Id'] = camp['@facilityID']
         camp['facilityName'] = camp['@facilityName']
         camp['facilityPhoto'] = camp['@faciltyPhoto']
         camp['latitude'] = round(float(camp['@latitude']))
@@ -105,8 +107,23 @@ def search_results(request):
     return render(request, "campsite/search_sites.html", context)
 
 #renders reservation page
-def reservation(request):
-    return render(request, "campsite/reservation.html")
+def reservation(request, park_Id, contract_Code):
+    r = requests.get("http://api.amp.active.com/camping/campground/details?parkId="+park_Id+"&contractCode="+contract_Code+"&api_key=axg5nzjhbug58fg67rfgwspc")
+    obj = xmltodict.parse(r.text)
+    for camp in obj['detailDescription']['photo']:
+        camp['photos'] = camp['@realUrl']
+
+    context = {
+        "site_name" : obj['detailDescription']['@facility'],
+        "site_desc" : obj['detailDescription']['@description'],
+        "site_img" : obj['detailDescription']['photo'][0]['@realUrl'],
+        "site_other_img" :  obj['detailDescription']['photo'],
+        "site" : obj['detailDescription'],
+        
+    }
+    return render(request, "campsite/reservation.html", context)
+
+
 
 #renders confirmation page 
 def confirmation(request):

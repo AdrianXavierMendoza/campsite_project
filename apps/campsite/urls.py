@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^logout$', views.logout), #clears session and redirects to login page
     url(r'^profile$', views.profile), #renders user profile
     url(r'^search$', views.search), #renders search page
-    url(r'^reservation$', views.reservation), #renders reservation page
+    url(r'^reservation/(?P<park_Id>\d+)/(?P<contract_Code>\w+)$', views.reservation), #renders reservation page
     url(r'^edit$', views.edit), #renders edit page
     url(r'^confirmation$',views.confirmation), #renders confirmation page 
     url(r'^search_results$', views.search_results),
