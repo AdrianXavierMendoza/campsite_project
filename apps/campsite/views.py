@@ -110,6 +110,10 @@ def search_results(request):
 def reservation(request, park_Id, contract_Code):
     r = requests.get("http://api.amp.active.com/camping/campground/details?parkId="+park_Id+"&contractCode="+contract_Code+"&api_key=axg5nzjhbug58fg67rfgwspc")
     obj = xmltodict.parse(r.text)
+    lat = obj['detailDescription']['@latitude']
+    lon = obj['detailDescription']['@longitude']
+    w = requests.get("http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid=366b23b0c77d79243f8e76a681d058eb&mode=xml")
+    weather = xmltodict.parse(w.text)
     # if obj['detailDescription']['photo']:
     for camp in obj['detailDescription']['photo']:
         camp['photos'] = camp['@realUrl']
@@ -120,6 +124,14 @@ def reservation(request, park_Id, contract_Code):
         "site_img" : obj['detailDescription']['photo'][0]['@realUrl'],
         "site_other_img" :  obj['detailDescription']['photo'],
         "site" : obj['detailDescription'],
+        "site_lat" : obj['detailDescription']['@latitude'],
+        "site_lon" : obj['detailDescription']['@longitude'],
+        "weather_city" : weather['current']['city']['@name'],
+        "weather_temp": round((float(weather['current']['temperature']['@value']) - 273.15)*(9/5)+32),
+        "weather_clouds" : weather['current']['clouds']['@name'],
+        "weather_rain" : weather['current']['precipitation']['@mode'],
+        "weather_hum": weather['current']['humidity']['@value'],
+        "weather_all": weather['current'],
         
     }
     return render(request, "campsite/reservation.html", context)
