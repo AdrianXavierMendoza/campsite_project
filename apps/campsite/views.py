@@ -97,8 +97,8 @@ def search_results(request):
         camp['park_Id'] = camp['@facilityID']
         camp['facilityName'] = camp['@facilityName']
         camp['facilityPhoto'] = camp['@faciltyPhoto']
-        camp['latitude'] = round(float(camp['@latitude']))
-        camp['longitude'] = round(float(camp['@longitude']))
+        # camp['latitude'] = round(float(camp['@latitude']))
+        # camp['longitude'] = round(float(camp['@longitude']))
         # camp['amenity'] = park_amenity
     context = {
         "campsites" : obj['resultset']['result'],
