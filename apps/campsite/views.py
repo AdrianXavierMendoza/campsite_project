@@ -78,7 +78,7 @@ def search(request):
         #     "site_lon" : request.session['result_lon'],
         #     # "site_pets" : request.session['spotlight_pets']
         # }
-        return render(request, "campsite/search_sites.html")
+    return render(request, "campsite/search_sites.html")
  
 #takes in parameters and redirects to search page (possibly needs AJAX)
 def search_results(request):

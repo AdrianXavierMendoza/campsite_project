@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Search</title>
+    <title>CampTown | Search</title>
     {% load static %}
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Archivo+Black|Open+Sans:300|Questrial|Quicksand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'campsite/css/search.css' %}">
@@ -13,13 +13,13 @@
 <body>
     {% include "campsite/header.html" %}
      {% block content %}
-    <div class="container" align='center'>
+    <div class="container" >
         <div class="wrapper col-10">
             <div>
             <h1>Search Campsites:</h1>
-                <form action='/search_results' method='GET' class='col-6'>
+                <form action='/search_results' method='GET'>
                     {% csrf_token %}
-                    <table class='col-12'>
+                    <table>
                         <tr>
                             <td>State:</td>
                             <td><select class='form form-control' name="pstate" required>
@@ -122,10 +122,10 @@
             </div>
             {% for camp in campsites %}
             <div class='campsites'>
-                    <img src="http://reserveamerica.com/{{ camp.facilityPhoto }}" alt="error" class="img-thumbnail d-inline-block col-2">
+                    <img src="http://reserveamerica.com/{{ camp.facilityPhoto }}" alt="error" class="d-inline-block col-2">
                     <div class='d-inline-block col-8'>
                         
-                        <p>
+                        <p class="text-uppercase">
                             <a href='/reservation/{{ camp.park_Id }}/{{ camp.contract_Code }}'>{{ camp.facilityName }}</a></p>
                         <p>{{ camp.park_Id }} {{ camp.amenity }}{{ camp.latitude }} {{ camp.longitude }} {{ camp.contract_Code }}</p>
                     </div>
