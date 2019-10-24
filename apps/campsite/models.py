@@ -47,21 +47,23 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
-# class Campsite(models.Model):
-#     facilityName = models.Charfield(max_length = 255)
-#     state = models.
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
+class Campground(models.Model):
+    name = models.CharField(max_length = 255)
+    contractCode = models.CharField(max_length=10)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 class Reservation(models.Model):
     user = models.ForeignKey(User, related_name = "reservations")
-    # campsite = models.ForeignKey(Campsite, related_name = "reservations")
+    campground = models.ForeignKey(Campground, related_name = "reservations")
     start_date = models.DateField()
     end_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
 class Review(models.Model):
-    #campsite = models.ForeignKey(Campsite, related_name
+    campground = models.ForeignKey(Campground, related_name = "reviews")
+    user = models.ForeignKey(User, related_name = "reviews")
+    content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

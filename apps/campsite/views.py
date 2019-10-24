@@ -124,10 +124,11 @@ def reservation(request, park_Id, contract_Code):
     }
     return render(request, "campsite/reservation.html", context)
 
-
-
 #renders confirmation page 
 def confirmation(request):
     return render(request, "campsite/confirmation.html")
 
-
+def post_review(request, user_id, cg_id):
+    user = User.objects.get(id=request.session['id'])
+    campground = Campground.get(id=cg_id)
+    new_review = Review.objects.create(content=)
