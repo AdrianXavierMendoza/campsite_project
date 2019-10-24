@@ -7,8 +7,12 @@
     /* font-family: 'Amatic SC', cursive; */
     
 }
-h1{
+h3{
     font-family: 'Amatic SC', cursive;
+}
+
+h1{
+    margin-bottom: 2.5em;
 }
 
 label{
@@ -18,13 +22,18 @@ label{
 form p{
     text-align: left;
 }
+.campsites{
+    text-align: center;
+}
+
 .campsites p{
     text-align: left;
+    width: 400px;
 }
 
 .wrapper{
-    padding-top: 50px;
-    margin: 0px;
+    padding-top: 40px;
+    margin: auto;
 }
 
 .container{
@@ -38,3 +47,12 @@ tr{
     margin-top: 10px;
 }
 
+table{
+    text-align: center;
+}
+td{
+    text-align: left;
+}
+table{
+    margin: auto;
+}
