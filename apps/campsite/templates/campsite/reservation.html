@@ -1,62 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Reservation</title>
     {% load static %}
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Archivo+Black|Open+Sans:300|Questrial|Quicksand&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Amatic+SC|Archivo+Black|Open+Sans:300|Questrial|Quicksand&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="{% static 'campsite/reservation.css' %}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
- {% include "campsite/header.html" %}
+    {% include "campsite/header.html" %}
     {% block content %}
     <div class="container col-12" align='center'>
         <div class="wrapper col-11">
             <div class="camp_details col-8 d-inline-block" align='right'>
 
-<!-- camp details -->
+                <!-- camp details -->
                 <div class="details" align='left'>
                     <!-- <div class='spotlight_photo d-inline-block'> -->
-                        <img src="http://reserveamerica.com{{ site_img }}" alt="..." class="img d-inline-block col-4">
+                    <img src="http://reserveamerica.com{{ site_img }}" alt="..." class="img d-inline-block col-4">
                     <!-- </div> -->
                     <div class='d-inline-block col-7'>
                         <p>{{ site_name }}</p>
                         <p>★★★★★</p>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Description</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Photos</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Directions</a>
-                                </li>
-                              </ul>
-                              <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">{{ site_desc }}</div>
-                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    {% for camp in site_other_img %}
-                                    <img src="http://reserveamerica.com{{ camp.photos }}" alt="..." class="img-thumbnail d-inline-block col-4">
-                                    {% endfor %}
-                                </div>
-                                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">{{ site }}</div>
-                              </div>
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                    aria-controls="home" aria-selected="true">Description</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                    aria-controls="profile" aria-selected="false">Photos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                                    aria-controls="contact" aria-selected="false">Directions</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                {{ site_desc }}</div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                {% for camp in site_other_img %}
+                                <img src="http://reserveamerica.com{{ camp.photos }}" alt="..."
+                                    class="img-thumbnail d-inline-block col-4">
+                                {% endfor %}
+                            </div>
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                {{ site }}</div>
+                        </div>
                     </div>
                 </div>
 
-<!-- previous camper reviews -->
+                <!-- previous camper reviews -->
                 <div class="reviews col-9" align='left'>
-                    <img src="https://s3.amazonaws.com/37assets/svn/1065-IMG_2529.jpg" alt="..." class="img-thumbnail d-inline-block col-3">
+                    <img src="https://s3.amazonaws.com/37assets/svn/1065-IMG_2529.jpg" alt="..."
+                        class="img-thumbnail d-inline-block col-3">
                     <div class='d-inline-block col-7'>
                         <p>★★★★★</p>
                         <p>Camp info</p>
                     </div>
 
-<!-- If statement for review box-->
+                    <!-- If statement for review box-->
                     <p>Leave a review: </p>
                     <textarea class='form form-control'></textarea>
                     <button type='submit' class='btn btn-info'>Submit</button>
@@ -65,7 +77,7 @@
 
 
 
-<!-- reservation/weather window-->
+            <!-- reservation/weather window-->
             <div class="left_window col-3 d-inline-block" align='left'>
                 <div class="weather">
                     <p>Current weather: </p>
@@ -89,4 +101,5 @@
     </div>
     {% endblock %}
 </body>
+
 </html>
