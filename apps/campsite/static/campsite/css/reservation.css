@@ -25,3 +25,10 @@ header{
 .wrapper{
     padding-top: 150px;
 }
+.right_window{
+    vertical-align: top;
+}
+.spotlight_photo{
+    position: fixed;
+    top: 0px;
+}

@@ -7,9 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Reservation</title>
     {% load static %}
-    <link
-        href="https://fonts.googleapis.com/css?family=Amatic+SC|Archivo+Black|Open+Sans:300|Questrial|Quicksand&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Archivo+Black|Open+Sans:300|Questrial|Quicksand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'campsite/reservation.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -19,14 +17,14 @@
     {% include "campsite/header.html" %}
     {% block content %}
     <div class="container col-12" align='center'>
-        <div class="wrapper col-11">
+        <div class="wrapper">
             <div class="camp_details col-8 d-inline-block" align='right'>
 
                 <!-- camp details -->
                 <div class="details" align='left'>
-                    <!-- <div class='spotlight_photo d-inline-block'> -->
-                    <img src="http://reserveamerica.com{{ site_img }}" alt="..." class="img d-inline-block col-4">
-                    <!-- </div> -->
+                    <div class='spotlight_photo d-inline-block'>
+                    <img src="http://reserveamerica.com{{ site_img }}" alt="..." class="img d-inline-block">
+                    </div>
                     <div class='d-inline-block col-7'>
                         <p>{{ site_name }}</p>
                         <p>★★★★★</p>
@@ -53,8 +51,7 @@
                                     class="img-thumbnail d-inline-block col-4">
                                 {% endfor %}
                             </div>
-                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                {{ site }}</div>
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">{{ site }}</div>
                         </div>
                     </div>
                 </div>
@@ -78,10 +75,9 @@
 
 
             <!-- reservation/weather window-->
-            <div class="left_window col-3 d-inline-block" align='left'>
+            <div class="right_window col-3 d-inline-block" align='left'>
                 <div class="weather">
                     <p>Current weather: </p>
-
                 </div>
 
 

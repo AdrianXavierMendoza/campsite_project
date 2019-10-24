@@ -110,6 +110,7 @@ def search_results(request):
 def reservation(request, park_Id, contract_Code):
     r = requests.get("http://api.amp.active.com/camping/campground/details?parkId="+park_Id+"&contractCode="+contract_Code+"&api_key=axg5nzjhbug58fg67rfgwspc")
     obj = xmltodict.parse(r.text)
+    # if obj['detailDescription']['photo']:
     for camp in obj['detailDescription']['photo']:
         camp['photos'] = camp['@realUrl']
 
