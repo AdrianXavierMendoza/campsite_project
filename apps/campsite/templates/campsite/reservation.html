@@ -39,13 +39,17 @@
                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                                     aria-controls="profile" aria-selected="false">Photos</a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
                                     aria-controls="contact" aria-selected="false">Directions</a>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link" id="address-tab" data-toggle="tab" href="#address" role="tab"
                                     aria-controls="address" aria-selected="false">Address</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="info-tab" data-toggle="tab" href="#info" role="tab"
+                                    aria-controls="info" aria-selected="false">Important Info</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
@@ -60,10 +64,13 @@
                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                                 <a href='{{ site_url }}'>{{ site_url }}</a> {{ site }}</div>
                             <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
+                                <p>{{ site_address }}</p>
+                                <p>{{ site_city }}, {{ site_state }}</p>
+                                <p>{{ site_zip }}</p>
                                 <p>{{ site_directions }}</p>
                             </div>
-                            <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
-                                <p>{{ site_directions }}</p>
+                            <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+                                <p>{{ site_info }}</p>
                             </div>
                         </div>
                     </div>
