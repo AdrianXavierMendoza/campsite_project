@@ -33,3 +33,10 @@ header{
 /* .prev_revs{
     align: left;
 } */
+.wrapper_reso{
+    padding:150px;
+}
+h1{
+    font-family: 'Amatic SC', cursive;
+    color: lightslategray;
+}

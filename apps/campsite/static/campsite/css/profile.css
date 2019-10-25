@@ -26,3 +26,10 @@
 .user h3{
     text-align: left;
 }
+.img{
+    border-radius: 25%;
+}
+h1{
+    font-family: 'Amatic SC', cursive;
+    color: lightslategray;
+}

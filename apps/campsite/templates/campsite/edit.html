@@ -7,7 +7,7 @@
     <title>CampTown | Edit Trip</title>
     {% load static %}
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Archivo+Black|Open+Sans:300|Questrial|Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'campsite/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'campsite/css/edit.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -15,8 +15,8 @@
     {% block content %}
     <div class="container">
         <h1> Edit your trip</h1>
-        <p>ID: {{ reso_edit.id }}</p>
-        <p>Name:{{reso_edit.campground.name}}</p>
+        
+        <p>Name: {{reso_edit.campground.name}}</p>
         <form action="/update/{{reso_edit.id }}" method="POST"> {% csrf_token %}
             <p>Start Date: <input type="date" name="start_date" value='{{start}}' placeholder="{{start}}"></p>
             {{ start }}

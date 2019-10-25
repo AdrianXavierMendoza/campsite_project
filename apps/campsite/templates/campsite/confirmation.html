@@ -7,7 +7,7 @@
     <title>CampTown | Confirmation</title>
     {% load static %}
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Archivo+Black|Open+Sans:300|Questrial|Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'campsite/css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'campsite/css/confirmation.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -16,7 +16,7 @@
         <div class="container col-10 mx-auto">
             <div class="wrapper">
                 <h1>Reservation complete!</h1>
-                <p>Your confirmation code is {{reso.id}}</p>
+                <p>Your confirmation code is {{conf_num}}</p>
                 <p>We're excited to hear about your trip from {{reso.start_date}} to {{reso.end_date}} at {{reso.campground.name}}. If you need to edit your trip or cancel you can do so by going to your Upcoming Trips in your profile.</p>
                 <a href="/profile" class="btn btn-outline-info">Go To Profile</a>
             </div>

@@ -6,11 +6,11 @@
 .container_index{
     font-family: 'Quicksand', sans-serif;
     text-align: center;
-    padding-left: 50px;
-    padding-top: 150px;
+    padding: 150px 0px 100px 50px;
 }
 .wrapper_index{
     text-align: center;
+    padding-bottom: 50px;
 }
 .jumbotron h3{
     width: 50px;

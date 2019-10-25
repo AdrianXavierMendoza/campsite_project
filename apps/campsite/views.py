@@ -184,25 +184,33 @@ def reservation(request, park_Id, contract_Code):
 
 #renders confirmation page 
 def confirmation(request, reso_id):
+    conf = Reservation.objects.get(id=reso_id)
     context = {
         "reso": Reservation.objects.get(id=reso_id),
         "current_user": User.objects.get(id=request.session['id']),
+        "conf_num": int(conf.id)*917307645834,
     }
     return render(request, "campsite/confirmation.html", context)
 
 def post_review(request, park_Id):
-    user = User.objects.get(id=request.session['id'])
-    campground = Campground.objects.filter(park_id=park_Id).first()
-    Review.objects.create(content=request.POST['content'], user=user, campground=campground)
-    contract_code = request.POST['post_review']
-    return redirect(f'/reservation/{park_Id}/{contract_code}')
+    if 'id' in request.session:
+        user = User.objects.get(id=request.session['id'])
+        campground = Campground.objects.filter(park_id=park_Id).first()
+        Review.objects.create(content=request.POST['content'], user=user, campground=campground)
+        contract_code = request.POST['post_review']
+        return redirect(f'/reservation/{park_Id}/{contract_code}')
+    else:
+        return redirect('/login_page')
 
 def make_reso(request, park_Id):
-    user = User.objects.get(id=request.session['id'])
-    campground = Campground.objects.filter(park_id=park_Id).first()
-    new_reso = Reservation.objects.create(user=user, campground=campground, start_date=request.POST['start_date'], end_date=request.POST['end_date'])
-    reso_id = new_reso.id
-    return redirect(f'/confirmation/{reso_id}')
+    if 'id' in request.session:
+        user = User.objects.get(id=request.session['id'])
+        campground = Campground.objects.filter(park_id=park_Id).first()
+        new_reso = Reservation.objects.create(user=user, campground=campground, start_date=request.POST['start_date'], end_date=request.POST['end_date'])
+        reso_id = new_reso.id
+        return redirect(f'/confirmation/{reso_id}')
+    else:
+        return redirect('/login_page')
 
 def cancel(request, reso_id):
     c= Reservation.objects.get(id=reso_id)

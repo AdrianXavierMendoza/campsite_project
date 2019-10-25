@@ -17,3 +17,17 @@ header{
     font-size: 40px;
     text-decoration: none;
 }
+.container{
+    padding-top: 300px;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+h1{
+    font-family: 'Amatic SC', cursive;
+    color: lightslategray;
+}
+a{
+    text-decoration: none;
+    color: white;
+}

@@ -18,9 +18,9 @@ header{
 
 .login, .logout{
     font-family: 'Quicksand', sans-serif;
-    margin-top: 20px;
+    /* margin-top: 20px;
     margin-left: 35%;
-    margin-bottom: 200px;
+    margin-bottom: 200px; */
     display: inline-block;
 }
 
@@ -37,7 +37,7 @@ header{
     height: 50px;
 }
 
-a, a:link, a:visited, a:hover{
+header a, header a:link, header a:visited, header a:hover{
     color: lightslategray;
     text-decoration: none;
 }
