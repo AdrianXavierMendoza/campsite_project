@@ -21,7 +21,8 @@ h3{
 }
 
 h1{
-    margin-bottom: 2.5em;
+    font-family: 'Amatic SC', cursive;
+    color: lightslategray;
 }
 
 label{

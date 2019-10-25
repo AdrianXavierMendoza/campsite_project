@@ -7,7 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CampTown | Campground Details</title>
     {% load static %}
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Archivo+Black|Open+Sans:300|Questrial|Quicksand&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Amatic+SC|Archivo+Black|Open+Sans:300|Questrial|Quicksand&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="{% static 'campsite/css/reservation.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -26,8 +28,7 @@
                     <h1>{{ site_name }}</h1>
                     <img src="http://reserveamerica.com{{ site_img }}" alt="..." class="camp_img col-8">
                     <!-- </div> -->
-                    <div class='d-inline-block'>
-                        <p>★★★★★</p>
+                    <div class='d-inline-block col-12 tabbers'>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
@@ -39,7 +40,7 @@
                             </li>
                             <!-- <li class="nav-item">
                                 <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                                    aria-controls="contact" aria-selected="false">Directions</a>
+                                    aria-controls="contact" aria-selected="false">COders 0nly CLub</a>
                             </li> -->
                             <li class="nav-item">
                                 <a class="nav-link" id="address-tab" data-toggle="tab" href="#address" role="tab"
@@ -56,11 +57,11 @@
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 {% for camp in site_other_img %}
                                 <img src="http://reserveamerica.com{{ camp.photos }}" alt="..."
-                                    class="img-thumbnail d-inline-block col-4">
+                                    class="img-thumbnail d-inline-block col-3">
                                 {% endfor %}
                             </div>
                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                <a href='{{ site_url }}'>{{ site_url }}</a> {{ site }}</div>
+                                <a href='{{ site_url }}'>{{ site_url }}</a> {{ site }}<p>{{ weather_all }}</p></div>
                             <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
                                 <p>{{ site_address }}</p>
                                 <p>{{ site_city }}, {{ site_state }}</p>
@@ -73,18 +74,25 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- previous camper reviews -->
-                <div class="prev_revs">
-                {% for rev in all_reviews %}
-                    <p>{{rev.user.first_name}} {{rev.user.last_name}} {{rev.created_at}}</p>
+                <div class="line_reso col-12"></div>
+                <div class="prev_revs col-9" align='left'>
+                    
+                    {% for rev in all_reviews %}
+                    <p>
+                        {% if 'id' in request.session == rev.user.id %}
+                            <a href='/profile'><span>{{rev.user.first_name}} {{rev.user.last_name}}</span></a> 
+                        {% else %}
+                            <span>{{rev.user.first_name}} {{rev.user.last_name}}</span>
+                        {% endif %}
+                        <em>{{rev.created_at}}</em></p>
                     <p>{{rev.content}}</p>
-                {% endfor %}
+                    {% endfor %}
                 </div>
                 <div class="reviews col-9" align='left'>
                     <form action="/post_review/{{park_Id}}" method="POST">{% csrf_token %}
                         <p>Leave a review: </p>
-                        <textarea class='form form-control'name="content"></textarea>
+                        <textarea class='form form-control' name="content"></textarea>
                         <input type="hidden" value="{{contract_Code}}" name="post_review">
                         <button type='submit' class='btn btn-info'>Submit</button>
                     </form>
@@ -95,7 +103,7 @@
             <!-- reservation/weather window-->
             <div class="window col-3 d-inline-block" align='left'>
                 <div class="weather">
-                    <h4>Current weather in:</h4>
+                    <h1>Current weather in:</h1>
                     <p>{{ weather_city }} </p>
                     <p>{{ weather_temp}} F / {{ weather_hum }}% humidity </p>
                     <p>{{ weather_clouds }}</p>
@@ -106,7 +114,7 @@
                 <div class="book">
                     <form action='/make_reso/{{park_Id}}' method='POST'>
                         {% csrf_token %}
-                        <p>Book a reservation</p>
+                        <h1>Book a reservation</h1>
                         <label>Start: </label>
                         <input type='date' class='form form-control' name="start_date">
                         <label>End: </label>
