@@ -13,8 +13,8 @@
 <body>
     {% include "campsite/header.html" %}
      {% block content %}
-    <div class="container" >
-        <div class="wrapper col-10">
+    <div class="container col-12" >
+        <div class="wrapper col-12">
             <div>
             <h1>Search Campsites:</h1>
                 <form action='/search_results' method='GET'>
@@ -121,9 +121,9 @@
                 </form>
             </div>
             {% for camp in campsites %}
-            <div class='campsites'>
-                    <img src="http://reserveamerica.com/{{ camp.facilityPhoto }}" alt="error" class="img d-inline-block col-2">
-                    <div class='d-inline-block'>
+            <div class='campsites d-inline-block col-3 img-thumbnail' align='left'>
+                    <img src="http://reserveamerica.com/{{ camp.facilityPhoto }}" alt="error" class="img d-inline-block">
+                    <div class='d-inline-block col-4'>
                         
                         <p class="text-uppercase">
                             <a href='/reservation/{{ camp.park_Id }}/{{ camp.contract_Code }}'>{{ camp.facilityName }}</a></p>
