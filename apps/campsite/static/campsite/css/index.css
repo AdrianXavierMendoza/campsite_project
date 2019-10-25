@@ -12,7 +12,10 @@
 .wrapper{
     text-align: center;
 }
-
+.jumbotron h3{
+    width: 50px;
+    text-align: center;
+}
 h1{
     font-family: 'Amatic SC', cursive;
     color: lightslategray;
@@ -28,13 +31,17 @@ ul{
     display: inline-block;
     margin-top: 20px;
 } */
-.jumbotron{
+.jumbotron1{
     display: inline-block;
     width: 30%;
-    height: 183px;
+    height: 230px;
     vertical-align: top;
     box-shadow: 5px 5px 8px silver;
     font-size: 50px;
+    padding-top: 20px;
+    margin-bottom: 30px;
+    border: 1px lightslategray solid;
+    border-radius: 8px;
 }
 
 /* header{
@@ -123,4 +130,12 @@ ul{
     box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.75);
 }
 
+.links p{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.links img{
+    padding-bottom: 20px;
+}
 

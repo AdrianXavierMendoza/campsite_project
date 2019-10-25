@@ -16,11 +16,12 @@ header{
     height: 120px;
 }
 
-.login{
+.login, .logout{
     font-family: 'Quicksand', sans-serif;
-    display: inline-block;
     margin-top: 20px;
+    margin-left: 35%;
 }
+
 
 .logo{
     margin-right: 60%;
@@ -73,5 +74,14 @@ header p{
 .hello{
     font-family: 'Amatic SC', cursive;
     display: inline-block;
-    margin-left: 30%;
+    margin-left: 35%;
+    color: lightslategray;
+    vertical-align: middle;
+}
+
+h2{
+    text-align: center;
+}
+span{
+    color: orangered;
 }
