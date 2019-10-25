@@ -23,13 +23,17 @@
     vertical-align: top;
 }
 
-.user h3{
-    text-align: left;
-}
 .img{
     border-radius: 25%;
+    
 }
 h1{
+    text-align: left;
     font-family: 'Amatic SC', cursive;
     color: lightslategray;
+}
+
+span{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
 }

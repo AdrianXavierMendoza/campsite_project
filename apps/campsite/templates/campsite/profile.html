@@ -17,7 +17,8 @@
         <div class="wrapper col-10" align='center'>
             <div class='user'>
                 <img src="https://farm6.staticflickr.com/5516/14549322414_74b3a76a63.jpg" alt="..." class="img d-inline-block col-3">
-                <div class='d-inline-block col-8'><h3 class=''>{{ current_user.first_name }} {{ current_user.last_name }} (member since: {{current_user.created_at.date}}) {{ member.created_at }}</h3>
+                <div class='d-inline-block col-8' align=left>
+                    <h1 class=''>{{ current_user.first_name }} {{ current_user.last_name }} <span>(member since: {{current_user.created_at.date}}) {{ member.created_at }}</span></h1>
                     <a href='/search' class='btn btn-info col-6'>CREATE A TRIP</a>
                 </div>
             </div>       
