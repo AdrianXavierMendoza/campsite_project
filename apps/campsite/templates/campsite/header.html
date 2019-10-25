@@ -23,12 +23,12 @@
                 <div class="line"></div>
             </div>
         </a>
-            
-        {% if 'id' in request.session %}
+        
         <div class="hello">
-            <p>Hello {{current_user.first_name}}</p>
+        {% if 'id' in request.session %}
+            <h2>Hello <span>{{current_user.first_name}}</span>!</h2>
         </div>
-        <a href="/logout" class="btn btn-outline-secondary login">Log Out</a>
+        <a href="/logout" class="btn btn-outline-secondary logout">Log Out</a>
         {% else %}
         <a href="/login_page" class="btn btn-outline-secondary login">Register |  Login</a>
         {% endif %}
