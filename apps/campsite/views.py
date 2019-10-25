@@ -9,15 +9,15 @@ import requests
 #renders index (homepage)
 def index(request):
     one = requests.get("http://api.amp.active.com/camping/campground/details?parkId=300101&contractCode=ESTS&api_key=axg5nzjhbug58fg67rfgwspc")
-    obj = xmltodict.parse(one.text)
+    obj1 = xmltodict.parse(one.text)
     two = requests.get("http://api.amp.active.com/camping/campground/details?parkId=1220021&contractCode=WY&api_key=axg5nzjhbug58fg67rfgwspc")
-    obj_1 = xmltodict.parse(two.text)
+    obj2 = xmltodict.parse(two.text)
 
     context={
-        "recommendation_img_1" : obj['detailDescription']['photo'][0]['@realUrl'],
-        "name_1": obj['detailDescription']['@facility'],
-        "recommendation_img_2" : obj_1['detailDescription']['photo'][0]['@realUrl'],
-        "name_2": obj_1['detailDescription']['@facility'],
+        "recommendation_img_1" : obj1['detailDescription']['photo'][0]['@realUrl'],
+        "name_1": obj1['detailDescription']['@facility'],
+        "recommendation_img_2" : obj2['detailDescription']['photo'][0]['@realUrl'],
+        "name_2": obj2['detailDescription']['@facility'],
     }
 
     return render(request, "campsite/index.html", context)
@@ -97,9 +97,9 @@ def update(requests, reso_id):
 
 #renders search page
 def search(request):
-    context={
-        "current_user": User.objects.get(id=request.session['id'])
-    }
+    # context={
+    #     "current_user": User.objects.get(id=request.session['id'])
+    # }
    
         # context = {
         #     "site" : request.session['search_result'],
@@ -108,7 +108,7 @@ def search(request):
         #     "site_lon" : request.session['result_lon'],
         #     # "site_pets" : request.session['spotlight_pets']
         # }
-    return render(request, "campsite/search_sites.html", context)
+    return render(request, "campsite/search_sites.html")
  
 #takes in parameters and redirects to search page (possibly needs AJAX)
 def search_results(request):
@@ -119,8 +119,7 @@ def search_results(request):
     park_pet = request.GET['petsAllowed']
     r = requests.get("http://api.amp.active.com/camping/campgrounds?pstate="+park_state+park_amenity+park_site_type+park_pet+"&api_key=axg5nzjhbug58fg67rfgwspc")
     obj = xmltodict.parse(r.text)
-    print(obj['resultset'])
-
+    print(obj['resultset'], "========================")
 
     for camp in obj['resultset']['result']:
         camp['contract_Code'] = camp['@contractID']
@@ -153,7 +152,7 @@ def reservation(request, park_Id, contract_Code):
         Campground.objects.create(name=obj['detailDescription']['@facility'], park_id=obj['detailDescription']['@facilityID'])
     print(Campground.objects.all())
     context = {
-        "current_user": User.objects.get(id=request.session['id']),
+        # "current_user": User.objects.get(id=request.session['id']),
         "site" : obj['detailDescription'],
         "site_name" : obj['detailDescription']['@facility'],
         "site_desc" : obj['detailDescription']['@description'],

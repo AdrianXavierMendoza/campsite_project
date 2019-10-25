@@ -5,7 +5,6 @@
     border-color: black;
     border-width: 0.5px; */
     /* font-family: 'Amatic SC', cursive; */
-    
 }
 header{
     height:100px;
@@ -27,5 +26,7 @@ header{
 }
 .right_window{
     vertical-align: top;
-
+}
+.prev_revs{
+    align: left;
 }

@@ -18,12 +18,11 @@
             <div>
             <h1>Search Campsites:</h1>
                 <form action='/search_results' method='GET'>
-                    {% csrf_token %}
+                    <!-- {% csrf_token %} -->
                     <table>
                         <tr>
                             <td>State:</td>
                             <td><select class='form form-control' name="pstate" required>
-                                <option value=""></option>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
                                 <option value="AZ">Arizona</option>

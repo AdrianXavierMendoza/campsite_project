@@ -7,6 +7,15 @@
     /* font-family: 'Amatic SC', cursive; */
     
 }
+.container{
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    padding-left: 50px;
+    padding-top: 150px;
+}
+.wrapper{
+    text-align: center;
+}
 h3{
     font-family: 'Amatic SC', cursive;
 }

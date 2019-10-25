@@ -79,7 +79,7 @@
                 <!-- previous camper reviews -->
                 <div class="prev_revs">
                 {% for rev in all_reviews %}
-                    <p>{{rev.user.first_name}} {{rev.user.last_name}}</p>
+                    <p>{{rev.user.first_name}} {{rev.user.last_name}} {{rev.created_at}}</p>
                     <p>{{rev.content}}</p>
                 {% endfor %}
                 </div>
