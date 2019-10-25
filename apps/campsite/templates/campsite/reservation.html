@@ -28,8 +28,7 @@
                     <h1>{{ site_name }}</h1>
                     <img src="http://reserveamerica.com{{ site_img }}" alt="..." class="camp_img col-8">
                     <!-- </div> -->
-                    <div class='d-inline-block'>
-                        <p>★★★★★</p>
+                    <div class='d-inline-block col-12 tabbers'>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
@@ -41,7 +40,7 @@
                             </li>
                             <!-- <li class="nav-item">
                                 <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                                    aria-controls="contact" aria-selected="false">Directions</a>
+                                    aria-controls="contact" aria-selected="false">COders 0nly CLub</a>
                             </li> -->
                             <li class="nav-item">
                                 <a class="nav-link" id="address-tab" data-toggle="tab" href="#address" role="tab"
@@ -58,11 +57,11 @@
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 {% for camp in site_other_img %}
                                 <img src="http://reserveamerica.com{{ camp.photos }}" alt="..."
-                                    class="img-thumbnail d-inline-block col-5">
+                                    class="img-thumbnail d-inline-block col-3">
                                 {% endfor %}
                             </div>
                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                <a href='{{ site_url }}'>{{ site_url }}</a> {{ site }}</div>
+                                <a href='{{ site_url }}'>{{ site_url }}</a> {{ site }}<p>{{ weather_all }}</p></div>
                             <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
                                 <p>{{ site_address }}</p>
                                 <p>{{ site_city }}, {{ site_state }}</p>
@@ -76,11 +75,12 @@
                     </div>
                 </div>
                 <!-- previous camper reviews -->
-                <div class="prev_revs">
-                    <div class="line_reso"></div>
+                <div class="line_reso col-12"></div>
+                <div class="prev_revs col-9" align='left'>
+                    
                     {% for rev in all_reviews %}
                     <p>
-                        {% if 'id' in request.session %}
+                        {% if 'id' in request.session == rev.user.id %}
                             <a href='/profile'><span>{{rev.user.first_name}} {{rev.user.last_name}}</span></a> 
                         {% else %}
                             <span>{{rev.user.first_name}} {{rev.user.last_name}}</span>

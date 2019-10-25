@@ -24,6 +24,7 @@
             </div>
         </a>
         {% if 'id' in request.session %}
+        <a href="/profile" class="btn btn-outline-secondary logout">Profile</a>
         <a href="/logout" class="btn btn-outline-secondary logout">Log Out</a>
         {% else %}
         <a href="/login_page" class="btn btn-outline-secondary login">Register |  Login</a>

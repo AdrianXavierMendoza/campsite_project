@@ -149,7 +149,7 @@ def reservation(request, park_Id, contract_Code):
         Campground.objects.create(name=obj['detailDescription']['@facility'], park_id=obj['detailDescription']['@facilityID'], contract_code = obj['detailDescription']['@contractID'])
     print(Campground.objects.all())
     context = {
-        "current_user": User.objects.get(id=request.session['id']),
+        # "current_user": User.objects.get(id=request.session['id']),
         "site" : obj['detailDescription'],
         "site_name" : obj['detailDescription']['@facility'],
         "site_desc" : obj['detailDescription']['@description'],

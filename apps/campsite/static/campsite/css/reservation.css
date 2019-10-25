@@ -30,6 +30,7 @@ header{
 }
 .pre_rev, .reviews{
     padding-top: 100px;
+    text-align: left;
 }
 /* .prev_revs{
     align: left;
@@ -57,4 +58,7 @@ span{
 }
 .btn{
     margin-top: 10px;
+}
+.camp_img{
+    margin-bottom: 50px;
 }
