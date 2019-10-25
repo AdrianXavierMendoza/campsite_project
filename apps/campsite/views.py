@@ -32,7 +32,7 @@ def registration(request):
             email = request.POST['email'],
             pw = pw_hash)
         request.session['id'] = new_user.id
-        return redirect(f"/new_user/{new_user.id}")
+        return redirect("/profile")
 
 #login process
 def login(request):
@@ -44,7 +44,7 @@ def login(request):
     else:
         logged_user = User.objects.get(email = request.POST['email'])
         request.session['id'] = logged_user.id
-        return redirect(f"/new_user/{logged_user.id}")
+        return redirect("/profile")
     
 #renders success page
 def success(request, id):
@@ -132,7 +132,9 @@ def reservation(request, park_Id, contract_Code):
         "weather_rain" : weather['current']['precipitation']['@mode'],
         "weather_hum": weather['current']['humidity']['@value'],
         "weather_all": weather['current'],
-        
+        "contractCode": contract_Code,
+        "park_Id": park_Id,
+        # "all_reviews": Review.objects.filter(campground=Campground.objects.get(park_id = park_Id))
     }
     return render(request, "campsite/reservation.html", context)
 
@@ -140,7 +142,9 @@ def reservation(request, park_Id, contract_Code):
 def confirmation(request):
     return render(request, "campsite/confirmation.html")
 
-def post_review(request, user_id, cg_id):
+def post_review(request, park_Id):
     user = User.objects.get(id=request.session['id'])
-    campground = Campground.get(id=cg_id)
-    new_review = Review.objects.create(content=)
+    campground = Campground.objects.get(park_id=park_Id)
+    Review.objects.create(content=request.POST['content'], user=user, campground=campground)
+    contract_code = request.POST['post_review']
+    return redirect(f'/reservation/{park_Id}/{contract_code}')
