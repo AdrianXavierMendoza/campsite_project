@@ -184,9 +184,11 @@ def reservation(request, park_Id, contract_Code):
 
 #renders confirmation page 
 def confirmation(request, reso_id):
+    conf = Reservation.objects.get(id=reso_id)
     context = {
         "reso": Reservation.objects.get(id=reso_id),
         "current_user": User.objects.get(id=request.session['id']),
+        "conf_num": int(conf.id)*917307645834,
     }
     return render(request, "campsite/confirmation.html", context)
 

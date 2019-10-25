@@ -8,4 +8,9 @@
 
 h1{
     font-family: 'Amatic SC', cursive;
+    color: lightslategray;
+}
+.wrapper{
+    padding-top: 150px; 
+    text-align: center;
 }
