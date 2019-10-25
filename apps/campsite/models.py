@@ -53,6 +53,9 @@ class Campground(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __repr__(self):
+        return (f"{self.name}, {self.park_id}")
+
 class Reservation(models.Model):
     user = models.ForeignKey(User, related_name = "reservations")
     campground = models.ForeignKey(Campground, related_name = "reservations")

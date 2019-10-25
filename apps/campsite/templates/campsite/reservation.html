@@ -80,7 +80,7 @@
                     <form action="/post_review/{{park_Id}}" method="POST">{% csrf_token %}
                         <p>Leave a review: </p>
                         <textarea class='form form-control'name="content"></textarea>
-                        <input type="hidden" value="{{contractCode}}" name="post_review">
+                        <input type="hidden" value="{{contract_Code}}" name="post_review">
                         <button type='submit' class='btn btn-info'>Submit</button>
                     </form>
                 </div>
@@ -99,13 +99,13 @@
 
 
                 <div class="book">
-                    <form action='' method='POST'>
+                    <form action='/make_reso/{{park_Id}}' method='POST'>
                         {% csrf_token %}
                         <p>Book a reservation</p>
                         <label>Start: </label>
-                        <input type='date' class='form form-control'>
+                        <input type='date' class='form form-control' name="start_date">
                         <label>End: </label>
-                        <input type='date' class='form form-control'>
+                        <input type='date' class='form form-control' name="end_date">
                         <button type='submit' class='btn btn-info'>Book</button>
                     </form>
                 </div>

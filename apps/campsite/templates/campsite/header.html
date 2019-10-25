@@ -22,12 +22,13 @@
                 <p>C a m p</p><div class="tent"></div><p>T o w n</p>
                 <div class="line"></div>
             </div>
+        </a>
+            
         {% if 'id' in request.session %}
         <div class="hello">
             <p>Hello {{user.first_name}}</p>
         </div>
         {% endif %}
-        </a>
         {% if 'id' not in request.session %}
         <a href="/login_page" class="btn btn-outline-secondary login">Register |  Login</a>
         {% else %}

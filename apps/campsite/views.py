@@ -62,11 +62,26 @@ def logout(request):
 
 #renders user profile
 def profile(request):
-    return render(request, "campsite/profile.html")
+    context={
+        "current_user": User.objects.get(id=request.session['id'])
+    }
+    return render(request, "campsite/profile.html", context)
 
 #renders edit page
-def edit(request):
-    return render (request, "campsite/edit.html")
+def edit(request, reso_id):
+    # reso = Reservation.objects.get(id=reso_id)
+    context = {
+        "reso_edit" : Reservation.objects.get(id=reso_id),
+        # "start" : reso.start_date.strftime('%m-%d-%Y'),
+    }
+    return render (request, "campsite/edit.html", context)
+
+def update(requests, reso_id):
+    update_reso = Reservation.objects.get(id=reso_id)
+    update_reso.start_date = requests.POST['start_date']
+    update_reso.end_date = requests.POST['end_date']
+    update_reso.save()
+    return redirect('/profile')
 
 #renders search page
 def search(request):
@@ -108,6 +123,7 @@ def search_results(request):
 
 #renders reservation page
 def reservation(request, park_Id, contract_Code):
+    
     r = requests.get("http://api.amp.active.com/camping/campground/details?parkId="+park_Id+"&contractCode="+contract_Code+"&api_key=axg5nzjhbug58fg67rfgwspc")
     obj = xmltodict.parse(r.text)
 
@@ -118,7 +134,9 @@ def reservation(request, park_Id, contract_Code):
     # if obj['detailDescription']['photo']:
     for camp in obj['detailDescription']['photo']:
         camp['photos'] = camp['@realUrl']
-
+    if not Campground.objects.filter(park_id = park_Id).first():
+        Campground.objects.create(name=obj['detailDescription']['@facility'], park_id=obj['detailDescription']['@facilityID'])
+    print(Campground.objects.all())
     context = {
         "site_name" : obj['detailDescription']['@facility'],
         "site_desc" : obj['detailDescription']['@description'],
@@ -138,19 +156,35 @@ def reservation(request, park_Id, contract_Code):
         "weather_rain" : weather['current']['precipitation']['@mode'],
         "weather_hum": weather['current']['humidity']['@value'],
         "weather_all": weather['current'],
-        "contractCode": contract_Code,
+        "contract_Code": contract_Code,
         "park_Id": park_Id,
-        # "all_reviews": Review.objects.filter(campground=Campground.objects.get(park_id = park_Id))
+        "all_reviews": Review.objects.filter(campground=Campground.objects.get(park_id = park_Id))
     }
     return render(request, "campsite/reservation.html", context)
 
 #renders confirmation page 
-def confirmation(request):
-    return render(request, "campsite/confirmation.html")
+def confirmation(request, reso_id):
+    context = {
+        "reso": Reservation.objects.get(id=reso_id),
+    }
+    return render(request, "campsite/confirmation.html", context)
 
 def post_review(request, park_Id):
     user = User.objects.get(id=request.session['id'])
-    campground = Campground.objects.get(park_id=park_Id)
+    campground = Campground.objects.filter(park_id=park_Id).first()
     Review.objects.create(content=request.POST['content'], user=user, campground=campground)
     contract_code = request.POST['post_review']
     return redirect(f'/reservation/{park_Id}/{contract_code}')
+
+def make_reso(request, park_Id):
+    user = User.objects.get(id=request.session['id'])
+    campground = Campground.objects.filter(park_id=park_Id).first()
+    new_reso = Reservation.objects.create(user=user, campground=campground, start_date=request.POST['start_date'], end_date=request.POST['end_date'])
+    reso_id = new_reso.id
+    return redirect(f'/confirmation/{reso_id}')
+
+def cancel(request, reso_id):
+    c= Reservation.objects.get(id=reso_id)
+    c.delete()
+
+    return redirect('/profile')

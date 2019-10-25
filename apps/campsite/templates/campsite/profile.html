@@ -20,7 +20,7 @@
                 <div class='d-inline-block col-8'><h3 class=''>{{ member.fname }} {{ member.lname }} Adrian Mendoza (member since: 2019) {{ member.created_at }}</h3>
                     <a href='/search' class='btn btn-info col-6'>CREATE A TRIP</a>
                 </div>
-            </div>
+            </div>       
 
             <h3>Upcoming Trips</h3>
             <table class="table table-borderless col-11">
@@ -33,12 +33,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for res in user.reservations %}
+                    {% for reso in current_user.reservations.all %}
                     <tr>
-                        <td><a href='/reservation/{{park_Id}}/{{contract_Code}}'>{{campground.name}}</a></td>
-                        <td>{{reservation.start_date}}</td>
-                        <td>{{reservation.end_date}}</td>
-                        <td><a href='/edit/{{ reservation.id }}'>Edit</a> | <a href='/cancel/{{ reservation.id }}'>Cancel</a></td>
+                        <td><a href='/reservation/{{park_Id}}/{{contract_Code}}'>{{reso.campground.name}}</a></td>
+                        <td>{{reso.start_date}}</td>
+                        <td>{{reso.end_date}}</td>
+                        <td><a href='/edit/{{ reso.id }}'>Edit</a> | <a href='/cancel/{{ reso.id }}'>Cancel</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
