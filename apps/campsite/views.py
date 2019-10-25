@@ -138,13 +138,19 @@ def reservation(request, park_Id, contract_Code):
         Campground.objects.create(name=obj['detailDescription']['@facility'], park_id=obj['detailDescription']['@facilityID'])
     print(Campground.objects.all())
     context = {
+        "site" : obj['detailDescription'],
         "site_name" : obj['detailDescription']['@facility'],
         "site_desc" : obj['detailDescription']['@description'],
         "site_img" : obj['detailDescription']['photo'][0]['@realUrl'],
         "site_other_img" :  obj['detailDescription']['photo'],
         "site_directions" : obj['detailDescription']['@drivingDirection'],
         "site_url" : obj['detailDescription']['@fullReservationUrl'],
-        "site" : obj['detailDescription'],
+        "site_address" : obj['detailDescription']['address']['@streetAddress'],
+        "site_city" : obj['detailDescription']['address']['@city'],
+        "site_state" : obj['detailDescription']['address']['@state'],
+        "site_zip" : obj['detailDescription']['address']['@zip'],
+        "site_info" : obj['detailDescription']['@importantInformation'],
+        
 
         "site_lat" : obj['detailDescription']['@latitude'],
         "site_lon" : obj['detailDescription']['@longitude'],
