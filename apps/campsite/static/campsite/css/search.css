@@ -31,18 +31,11 @@ label{
 form p{
     text-align: left;
 }
-.campsites{
-    text-align: center;
-}
 
-.campsites p{
-    text-align: left;
-    width: 400px;
-}
 
 .wrapper{
     padding-top: 40px;
-    margin: auto;
+
 }
 
 .container{
@@ -64,4 +57,12 @@ td{
 }
 table{
     margin: auto;
+}
+.campsite_result{
+    padding:10px;
+    height:100px;
+}
+.campsite_result img{
+    vertical-align: top;
+
 }
