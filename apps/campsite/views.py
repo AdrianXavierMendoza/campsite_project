@@ -191,11 +191,14 @@ def confirmation(request, reso_id):
     return render(request, "campsite/confirmation.html", context)
 
 def post_review(request, park_Id):
-    user = User.objects.get(id=request.session['id'])
-    campground = Campground.objects.filter(park_id=park_Id).first()
-    Review.objects.create(content=request.POST['content'], user=user, campground=campground)
-    contract_code = request.POST['post_review']
-    return redirect(f'/reservation/{park_Id}/{contract_code}')
+    if 'id' in request.session:
+        user = User.objects.get(id=request.session['id'])
+        campground = Campground.objects.filter(park_id=park_Id).first()
+        Review.objects.create(content=request.POST['content'], user=user, campground=campground)
+        contract_code = request.POST['post_review']
+        return redirect(f'/reservation/{park_Id}/{contract_code}')
+    else:
+        return redirect('/login_page')
 
 def make_reso(request, park_Id):
     user = User.objects.get(id=request.session['id'])
