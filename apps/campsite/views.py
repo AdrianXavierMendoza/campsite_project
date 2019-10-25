@@ -203,11 +203,14 @@ def post_review(request, park_Id):
         return redirect('/login_page')
 
 def make_reso(request, park_Id):
-    user = User.objects.get(id=request.session['id'])
-    campground = Campground.objects.filter(park_id=park_Id).first()
-    new_reso = Reservation.objects.create(user=user, campground=campground, start_date=request.POST['start_date'], end_date=request.POST['end_date'])
-    reso_id = new_reso.id
-    return redirect(f'/confirmation/{reso_id}')
+    if 'id' in request.session:
+        user = User.objects.get(id=request.session['id'])
+        campground = Campground.objects.filter(park_id=park_Id).first()
+        new_reso = Reservation.objects.create(user=user, campground=campground, start_date=request.POST['start_date'], end_date=request.POST['end_date'])
+        reso_id = new_reso.id
+        return redirect(f'/confirmation/{reso_id}')
+    else:
+        return redirect('/login_page')
 
 def cancel(request, reso_id):
     c= Reservation.objects.get(id=reso_id)

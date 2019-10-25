@@ -16,7 +16,7 @@
     <div class="container col-12" align='center'>
         <div class="wrapper col-10" align='center'>
             <div class='user'>
-                <img src="https://whenwedip.com/wp-content/uploads/2019/10/67836458_10162101419540182_7182392861852172288_o-e1570639413756.jpg" alt="..." class="img-thumbnail d-inline-block col-3">
+                <img src="https://farm6.staticflickr.com/5516/14549322414_74b3a76a63.jpg" alt="..." class="d-inline-block col-3">
                 <div class='d-inline-block col-8'><h3 class=''>{{ current_user.first_name }} {{ current_user.last_name }} (member since: {{current_user.created_at.date}}) {{ member.created_at }}</h3>
                     <a href='/search' class='btn btn-info col-6'>CREATE A TRIP</a>
                 </div>
@@ -36,7 +36,7 @@
                     {% if current_user.reservations.first %}
                     {% for reso in current_user.reservations.all %}
                     <tr>
-                        <td><a href='/reservation/{{park_Id}}/{{contract_Code}}'>{{reso.campground.name}}</a></td>
+                        <td><a href='/reservation/{{reso.campground.park_id}}/{{reso.contract_Code}}'>{{reso.campground.name}}</a></td>
                         <td>{{reso.start_date}}</td>
                         <td>{{reso.end_date}}</td>
                         <td><a href='/edit/{{ reso.id }}'>Edit</a> | <a href='/cancel/{{ reso.id }}'>Cancel</a></td>
@@ -46,7 +46,7 @@
                 </tbody>
              </table>
 
-             <h3>Previous Trips</h3>
+             <!-- <h3>Previous Trips</h3>
             <table class="table table-borderless col-11">
                 <thead>
                     <tr>
@@ -66,7 +66,7 @@
                         <td><a href='/edit/{{ reservation.id }}'>Review</a></td>
                     </tr>
                         {% endfor %}
-                    {% endif %}
+                    {% endif %} -->
                 </tbody>
             </table>
 <!-- if user has not left a review -->

@@ -37,7 +37,7 @@ header{
     height: 50px;
 }
 
-a, a:link, a:visited, a:hover{
+header a, header a:link, header a:visited, header a:hover{
     color: lightslategray;
     text-decoration: none;
 }
