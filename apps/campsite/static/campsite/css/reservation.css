@@ -26,6 +26,7 @@ header{
 .window{
     margin-bottom: 100px;
     vertical-align: top;
+    padding-top:25px;
 }
 .pre_rev, .reviews{
     padding-top: 100px;
@@ -39,4 +40,21 @@ header{
 h1{
     font-family: 'Amatic SC', cursive;
     color: lightslategray;
+}
+.line_reso{
+    border: 1px solid gray;
+    padding: 2px;
+    width: 860px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+span{
+    font-weight: bold;
+    color: orangered;
+}
+.tab-pane{
+    padding:10px;
+}
+.btn{
+    margin-top: 10px;
 }

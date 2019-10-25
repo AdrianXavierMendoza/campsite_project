@@ -119,7 +119,6 @@ def search_results(request):
     park_pet = request.GET['petsAllowed']
     r = requests.get("http://api.amp.active.com/camping/campgrounds?pstate="+park_state+park_amenity+park_site_type+park_pet+"&api_key=axg5nzjhbug58fg67rfgwspc")
     obj = xmltodict.parse(r.text)
-
     for camp in obj['resultset']['result']:
         camp['contract_Code'] = camp['@contractID']
         camp['park_Id'] = camp['@facilityID']
@@ -129,8 +128,7 @@ def search_results(request):
         # camp['longitude'] = round(float(camp['@longitude']))
         # camp['amenity'] = park_amenity
     context = {
-        "campsites" : obj['resultset']['result'],
-        
+           "campsites" : obj['resultset']['result'],
     }
     return render(request, "campsite/search_sites.html", context)
 
@@ -148,10 +146,10 @@ def reservation(request, park_Id, contract_Code):
     for camp in obj['detailDescription']['photo']:
         camp['photos'] = camp['@realUrl']
     if not Campground.objects.filter(park_id = park_Id).first():
-        Campground.objects.create(name=obj['detailDescription']['@facility'], park_id=obj['detailDescription']['@facilityID'])
+        Campground.objects.create(name=obj['detailDescription']['@facility'], park_id=obj['detailDescription']['@facilityID'], contract_code = obj['detailDescription']['@contractID'])
     print(Campground.objects.all())
     context = {
-        # "current_user": User.objects.get(id=request.session['id']),
+        "current_user": User.objects.get(id=request.session['id']),
         "site" : obj['detailDescription'],
         "site_name" : obj['detailDescription']['@facility'],
         "site_desc" : obj['detailDescription']['@description'],

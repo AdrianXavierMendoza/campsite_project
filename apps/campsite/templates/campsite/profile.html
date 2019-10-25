@@ -37,7 +37,7 @@
                     {% if current_user.reservations.first %}
                     {% for reso in current_user.reservations.all %}
                     <tr>
-                        <td><a href='/reservation/{{reso.campground.park_id}}/{{reso.contract_Code}}'>{{reso.campground.name}}</a></td>
+                        <td><a href='/reservation/{{reso.campground.park_id}}/{{reso.campground.contract_code}}'>{{reso.campground.name}}</a></td>
                         <td>{{reso.start_date}}</td>
                         <td>{{reso.end_date}}</td>
                         <td><a href='/edit/{{ reso.id }}'>Edit</a> | <a href='/cancel/{{ reso.id }}'>Cancel</a></td>
