@@ -10,7 +10,7 @@
 header{
     height:100px;
 }
-.camp_details, .book{
+.camp_details, .right_window{
     vertical-align: top;
 }
 .weather{
@@ -27,8 +27,5 @@ header{
 }
 .right_window{
     vertical-align: top;
-}
-.spotlight_photo{
-    position: fixed;
-    top: 0px;
+
 }
