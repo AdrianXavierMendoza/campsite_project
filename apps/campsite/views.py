@@ -119,7 +119,6 @@ def search_results(request):
     park_pet = request.GET['petsAllowed']
     r = requests.get("http://api.amp.active.com/camping/campgrounds?pstate="+park_state+park_amenity+park_site_type+park_pet+"&api_key=axg5nzjhbug58fg67rfgwspc")
     obj = xmltodict.parse(r.text)
-    print(obj['resultset'])
 
 
     for camp in obj['resultset']['result']:

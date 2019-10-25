@@ -49,6 +49,11 @@ td{
 table{
     margin: auto;
 }
-.campsites{
+.campsite_result{
     padding:10px;
+    height:100px;
+}
+.campsite_result img{
+    vertical-align: top;
+
 }
