@@ -18,7 +18,7 @@
             <div class='user'>
                 <img src="https://s3.amazonaws.com/37assets/svn/1065-IMG_2529.jpg" alt="..." class="img-thumbnail d-inline-block col-3">
                 <div class='d-inline-block col-8'><h3 class=''>{{ member.fname }} {{ member.lname }} Adrian Mendoza (member since: 2019) {{ member.created_at }}</h3>
-                    <a href='' class='btn btn-info col-6'>CREATE A TRIP</a>
+                    <a href='/search' class='btn btn-info col-6'>CREATE A TRIP</a>
                 </div>
             </div>
 
@@ -26,62 +26,49 @@
             <table class="table table-borderless col-11">
                 <thead>
                     <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Campsite</th>
-                    <th scope="col">Start</th>
-                    <th scope="col">End</th>
+                    <th scope="col">Campground</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
                     <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% for res in user.reservations %}
                     <tr>
-                    <th scope="row">1</th>
-                    <td><a href=''>Lake Chabot</a></td>
-                    <td>08/12/2020</td>
-                    <td>08/20/2020</td>
-                    <td>
-                        <a href='/edit/{{ trip.id }}'>Edit</a>
-                        <a href='/cancel/{{ trip.id }}'>Cancel</a>
-                    </td>
-                    </tr>
-                    {% for trip in locations %}
-                    <tr>
-                    <th scope="row">{{ trip.id }}</th>
-                    <td>{{ trip.site }}</td>
-                    <td>{{ trip.start }}</td>
-                    <td>{{ trip.end }}</td>
-                    <td>
-                        <a href='/edit/{{ trip.id }}'>Edit</a>
-                        <a href='/cancel/{{ trip.id }}'>Cancel</a>
-                    </td>
+                        <td><a href='/reservation/{{park_Id}}/{{contract_Code}}'>{{campground.name}}</a></td>
+                        <td>{{reservation.start_date}}</td>
+                        <td>{{reservation.end_date}}</td>
+                        <td><a href='/edit/{{ reservation.id }}'>Edit</a> | <a href='/cancel/{{ reservation.id }}'>Cancel</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
              </table>
 
              <h3>Previous Trips</h3>
-
-             <table class="table table-borderless col-11">
-                    <thead>
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Campsite</th>
-                        <th scope="col">Review</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-<!-- Example reviews -->
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>
-                                <p><a href=''>Lake Chabot</a></p>
-                                <p>8/18-8/20</p>
-                                <a href='/book/{{ trip.id }}'>Book again</a>
-                            </td>
-
+            <table class="table table-borderless col-11">
+                <thead>
+                    <tr>
+                    <th scope="col">Campground</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if now > reservation.end_date %}
+                        {% for res in reservation %}
+                    <tr>
+                        <td><a href='/reservation/{{park_Id}}/{{contract_Code}}'>{{campground.name}}</a></td>
+                        <td>{{reservation.start_date}}</td>
+                        <td>{{reservation.end_date}}</td>
+                        <td><a href='/edit/{{ reservation.id }}'>Review</a></td>
+                    </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
 <!-- if user has not left a review -->
-                            <td>
+                            <!-- <td>
                                 <textarea class='form form-control'></textarea>
                                 <button type='submit' class='btn btn-info'>Submit</button>
                             </td>
@@ -92,30 +79,30 @@
                                 <p><a href=''>Lake Chabot</a></p>
                                 <p>8/18-8/20</p>
                                 <a href='/book/{{ trip.id }}'>Book again</a>
-                            </td>
+                            </td> -->
 
 <!-- if user has left a review -->
-                            <td>
+                            <!-- <td>
                                 <h6>★★★★★</h6>
                                 <p>THis campsite was great!!</p>
                             </td>
-                        </tr>
+                        </tr> -->
 <!-- END EXAMPLE -->
 
 
 
 <!-- THIS IS THE LOOP -->
-                        {% for trip in locations %}
+                        <!-- {% for trip in locations %}
                         <tr>
                             <th scope="row">{{ trip.id</th>
                             <td>
                                 <p>{{ trip.site }}</p>
                                 <p>{{ trip.start }}-{{ trip.end }}</p>
                                 <a href='/book/{{ trip.id }}'>Book again</a>
-                            </td>
+                            </td> -->
     
 <!-- Condition: if user has review/notreviewed-->
-                            {% if review in user.reviews %}
+                            <!-- {% if review in user.reviews %}
                             <td>
                                 <h6>★★★★★</h6>
                                 <p>This campsite was great!!</p>
@@ -129,9 +116,7 @@
                         </tr>
 
                         
-                        {% endfor %}
-                    </tbody>
-                 </table>
+                        {% endfor %} -->
 
         </div>
     </div>

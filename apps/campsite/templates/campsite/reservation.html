@@ -70,22 +70,21 @@
                 </div>
 
                 <!-- previous camper reviews -->
+                <div class="prev_revs">
+                {% for rev in all_reviews %}
+                    <p>{{rev.user.first_name}} {{rev.user.last_name}}</p>
+                    <p>{{rev.content}}</p>
+                {% endfor %}
+                </div>
                 <div class="reviews col-9" align='left'>
-
-                    <img src="https://s3.amazonaws.com/37assets/svn/1065-IMG_2529.jpg" alt="..."
-                        class="img-thumbnail d-inline-block col-3">
-                    <div class='d-inline-block col-7'>
-                        <p>★★★★★</p>
-                        <p>Camp info</p>
-                    </div>
-
-                    <!-- If statement for review box-->
-                    <p>Leave a review: </p>
-                    <textarea class='form form-control'></textarea>
-                    <button type='submit' class='btn btn-info'>Submit</button>
+                    <form action="/post_review/{{park_Id}}" method="POST">{% csrf_token %}
+                        <p>Leave a review: </p>
+                        <textarea class='form form-control'name="content"></textarea>
+                        <input type="hidden" value="{{contractCode}}" name="post_review">
+                        <button type='submit' class='btn btn-info'>Submit</button>
+                    </form>
                 </div>
             </div>
-
 
 
             <!-- reservation/weather window-->
@@ -95,7 +94,7 @@
                     <p>{{ weather_city }} </p>
                     <p>{{ weather_temp}} F / {{ weather_hum }}% humidity </p>
                     <p>{{ weather_clouds }}</p>
-                    <p>Presipitation: {{ weather_rain }}</p>
+                    <p>Precipitation: {{ weather_rain }}</p>
                 </div>
 
 
