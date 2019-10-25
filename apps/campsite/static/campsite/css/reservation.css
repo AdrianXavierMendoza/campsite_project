@@ -20,15 +20,16 @@ header{
     padding-bottom: 50px;
 }
 .wrapper{
-    padding-top: 150px;
+    
     padding-bottom: 50px;
 }
 .window{
     margin-bottom: 100px;
+    vertical-align: top;
 }
 .pre_rev, .reviews{
     padding-top: 100px;
 }
-.prev_revs{
+/* .prev_revs{
     align: left;
-}
+} */
