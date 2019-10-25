@@ -16,8 +16,8 @@
 <body>
     {% include "campsite/header.html" %}
         {% block content %}
-        <div class="container_index">
-            <div class="wrapper_index col-10 mx-auto">
+        <div class="container_index col-10 mx-auto">
+            <div class="wrapper_index col-8 mx-auto">
                 <div class="text">
                     <p>Welcome!</p>
                     <p>Plan your next adventure today!</p>
@@ -37,10 +37,11 @@
                 </div>
                 <div class="about">
                     <p>Here at CampTown we make it easy to plan your next camping adventure. We are committed to making your next camping trip as specail as you are!</p>
+                    <p>Check out our two staff picks for the month or browse all campsites!</p>
                 </div>
                 <div class="links ">
                     <a href="/reservation/300101/ESTS"><div class="jumbotron1"><p class="text-uppercase">{{name_1}}</p><img src="http://reserveamerica.com{{ recommendation_img_1 }}" alt="..."></div></a>
-                    <a href="/search"><div class="jumbotron1"><h3>Browse campsites</h3></div></a>
+                    <a href="/search"><div class="jumbotron1"><h3>Browse all campsites</h3></div></a>
                     <a href="/reservation/1220021/WY"><div class="jumbotron1"><p class="text-uppercase">{{name_2}}</p><img src="http://reserveamerica.com{{ recommendation_img_2 }}" alt="..."></div></a>
                 </div>
             </div>

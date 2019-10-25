@@ -10,6 +10,8 @@
 .container{
     margin-left:0px;
     font-family: 'Quicksand', sans-serif;
+    padding-left: 50px;
+    padding-top: 100px;
 }
 
 .wrapper{
