@@ -70,7 +70,7 @@ header p{
 
 .btn{
     box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.75);
-    box-align: right;
+    /* box-align: right; */
 }
 
 .hello{
