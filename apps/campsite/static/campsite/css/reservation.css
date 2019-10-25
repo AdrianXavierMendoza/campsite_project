@@ -9,9 +9,6 @@
 header{
     height:100px;
 }
-.camp_details, .right_window{
-    vertical-align: top;
-}
 .weather{
     min-height: 100px;
 }
@@ -23,9 +20,13 @@ header{
 }
 .wrapper{
     padding-top: 150px;
+    padding-bottom: 50px;
 }
-.right_window{
-    vertical-align: top;
+.window{
+    margin-bottom: 100px;
+}
+.pre_rev, .reviews{
+    padding-top: 100px;
 }
 .prev_revs{
     align: left;
